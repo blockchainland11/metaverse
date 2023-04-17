@@ -75,7 +75,7 @@ io.on('connection', function(socket){
 				   isMute:true
 				   };//new user  in clients list
 					
-		console.log('[INFO] player '+currentUser.name+': logged!');
+		console.log('[INFO] player '+currentUser.name+': logged!' +data.publicAddress);
 		
 
 		 //add currentUser in clients list
