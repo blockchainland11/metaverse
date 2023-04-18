@@ -92,21 +92,21 @@ io.on('connection', function(socket){
 		 /*********************************************************************************************/		
 		
 		//send to the client.js script
-		socket.emit("JOIN_SUCCESS",currentUser.id,currentUser.name,currentUser.posX,currentUser.posY,currentUser.posZ,data.model,publicAddress);
+		socket.emit("JOIN_SUCCESS",currentUser.id,currentUser.name,currentUser.posX,currentUser.posY,currentUser.posZ,data.model,currentUser.publicAddress);
 		
          //spawn all connected clients for currentUser client 
          clients.forEach( function(i) {
 		    if(i.id!=currentUser.id)
 			{ 
 		      //send to the client.js script
-		      socket.emit('SPAWN_PLAYER',i.id,i.name,i.posX,i.posY,i.posZ,i.model,publicAddress);
+		      socket.emit('SPAWN_PLAYER',i.id,i.name,i.posX,i.posY,i.posZ,i.model,i.publicAddress);
 			  
 		    }//END_IF
 	   
 	     });//end_forEach
 		
 		 // spawn currentUser client on clients in broadcast
-		socket.broadcast.emit('SPAWN_PLAYER',currentUser.id,currentUser.name,currentUser.posX,currentUser.posY,currentUser.posZ,data.model,publicAddress);
+		socket.broadcast.emit('SPAWN_PLAYER',currentUser.id,currentUser.name,currentUser.posX,currentUser.posY,currentUser.posZ,data.model,currentUser.publicAddress);
 		
   
 	});//END_SOCKET_ON
